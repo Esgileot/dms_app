@@ -173,7 +173,7 @@ const expandedLog = ref<number | null>(null);
                             <Link
                                 v-for="page in logs.last_page"
                                 :key="page"
-                                :href="route('web.domains.show', { domain: domain.id, page })"
+                                :href="route('web.dashboard.page', { domain: domain.id, page })"
                                 :class="page === logs.current_page
                                     ? 'bg-indigo-600 text-white'
                                     : 'bg-white text-gray-700 hover:bg-gray-50'"

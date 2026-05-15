@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+@source "./**/*.vue";
+@source "../views/**/*.blade.php";
+
+@theme {
+  --font-sans: "Instrument Sans", system-ui, sans-serif;
+}

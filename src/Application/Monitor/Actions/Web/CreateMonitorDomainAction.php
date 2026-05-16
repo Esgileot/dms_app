@@ -40,7 +40,7 @@ class CreateMonitorDomainAction
                 $scheduleSetting->monitor_domain_id = $monitorDomain->id;
                 $scheduleSetting = $this->scheduleSettingWriteEloquent->save(scheduleSetting: $scheduleSetting);
 
-                return $monitorDomain->setRelation('scheduleSettings', $scheduleSetting);
+                return $monitorDomain->setRelation('scheduleSetting', $scheduleSetting);
             }, 3);
         } catch (Throwable $e) {
             throw new EntityCreateException('Failed to create monitor domain', previous: $e);

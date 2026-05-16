@@ -86,7 +86,7 @@ const deleteDomain = (id: number) => {
                                     {{ domain.domain }}
                                 </td>
                                 <td class="px-6 py-4 text-sm text-gray-500">
-                                    {{ new Date(domain.next_check_at).toLocaleString() ?? '—' }}
+                                    {{ domain.next_check_at ? new Date(domain.next_check_at).toLocaleString() : '—' }}
                                 </td>
                                 <td class="px-6 py-4 text-sm text-gray-500">
                                     {{ domain.schedule_setting?.method ?? '—' }}

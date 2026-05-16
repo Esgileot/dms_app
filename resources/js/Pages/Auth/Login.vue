@@ -34,73 +34,61 @@ const submit = () => {
             {{ status }}
         </div>
 
-        <div class="bg-gray-50 flex items-center justify-center py-8 px-4">
-            <div class="w-full max-w-md space-y-8">
-                <div>
-                    <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
-                        Login
-                    </h2>
-                </div>
-
-                <form @submit.prevent="submit">
-                    <div>
-                        <InputLabel for="email" value="Email" />
-
-                        <TextInput
-                            id="email"
-                            type="email"
-                            class="mt-1 block w-full"
-                            v-model="form.email"
-                            required
-                            autofocus
-                            autocomplete="username"
-                        />
-
-                        <InputError class="mt-2" :message="form.errors.email" />
-                    </div>
-
-                    <div class="mt-4">
-                        <InputLabel for="password" value="Password" />
-
-                        <TextInput
-                            id="password"
-                            type="password"
-                            class="mt-1 block w-full"
-                            v-model="form.password"
-                            required
-                            autocomplete="current-password"
-                        />
-
-                        <InputError class="mt-2" :message="form.errors.password" />
-                    </div>
-
-                    <div class="mt-4 block">
-                        <label class="flex items-center">
-                            <Checkbox name="remember" v-model:checked="form.remember" />
-                            <span class="ms-2 text-sm text-gray-600"
-                                >Remember me</span
-                            >
-                        </label>
-                    </div>
-
-                    <div class="mt-4 flex items-center justify-between">
-                        <Link
-                            :href="route('web.register')"
-                            class="text-sm text-gray-600 hover:text-gray-900 underline"
-                        >
-                            Not registered?
-                        </Link>
-
-                        <PrimaryButton
-                            class="ms-4"
-                            :class="{ 'opacity-25': form.processing }"
-                            :disabled="form.processing"
-                        >
-                            Log in
-                        </PrimaryButton>
-                    </div>
-                </form>
-            </div>
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-900">Log in</h2>
+            <p class="mt-1 text-sm text-gray-600">Welcome back.</p>
         </div>
+
+        <form @submit.prevent="submit" class="space-y-6">
+            <div>
+                <InputLabel for="email" value="Email" />
+                <TextInput
+                    id="email"
+                    type="email"
+                    class="mt-1 block w-full"
+                    v-model="form.email"
+                    required
+                    autofocus
+                    autocomplete="username"
+                />
+                <InputError class="mt-2" :message="form.errors.email" />
+            </div>
+
+            <div>
+                <InputLabel for="password" value="Password" />
+                <TextInput
+                    id="password"
+                    type="password"
+                    class="mt-1 block w-full"
+                    v-model="form.password"
+                    required
+                    autocomplete="current-password"
+                />
+                <InputError class="mt-2" :message="form.errors.password" />
+            </div>
+
+            <div>
+                <label class="flex items-center">
+                    <Checkbox name="remember" v-model:checked="form.remember" />
+                    <span class="ms-2 text-sm text-gray-600">Remember me</span>
+                </label>
+            </div>
+
+            <div class="flex items-center justify-between">
+                <Link
+                    :href="route('web.register')"
+                    class="text-sm text-gray-600 hover:text-gray-900 underline"
+                >
+                    Not registered?
+                </Link>
+
+                <PrimaryButton
+                    :class="{ 'opacity-75 cursor-not-allowed': form.processing }"
+                    :disabled="form.processing"
+                >
+                    {{ form.processing ? 'Signing in...' : 'Log in' }}
+                </PrimaryButton>
+            </div>
+        </form>
     </GuestLayout>
 </template>

@@ -13,6 +13,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Throwable;
@@ -68,9 +69,13 @@ class CheckDomainJob implements ShouldQueue
         }
     }
 
-    private function makeHttpRequest(MonitorDomain $monitorDomain)
+    private function makeHttpRequest(MonitorDomain $monitorDomain): Response
     {
         $setting = $monitorDomain->scheduleSetting;
+
+        if ($setting === null) {
+            throw new \RuntimeException("ScheduleSetting not found for domain #{$monitorDomain->id}");
+        }
 
         $http = Http::timeout($setting->timeout ?? 15)
             ->withUserAgent('Domain-Monitor-Bot');

@@ -24,6 +24,8 @@ class RegisterAction
 
         $admin = $this->adminWriteEloquent->save($admin);
 
+        $admin->sendEmailVerificationNotification();
+
         Auth::login($admin);
 
         return $admin;

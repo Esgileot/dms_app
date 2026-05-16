@@ -66,7 +66,7 @@ const submit = () => {
                             <select
                                 id="method"
                                 v-model="form.method"
-                                class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
+                                class="mt-1 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 focus:outline-none transition-all duration-200"
                             >
                                 <option value="GET">GET</option>
                                 <option value="HEAD">HEAD</option>

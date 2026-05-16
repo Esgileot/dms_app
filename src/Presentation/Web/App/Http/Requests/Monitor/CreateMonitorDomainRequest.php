@@ -14,7 +14,7 @@ class CreateMonitorDomainRequest extends WebBaseRequest
     public function rules(): array
     {
         return [
-            'domain'      => ['bail', 'required', 'string', 'max:255', 'regex:/^([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/'],
+            'domain'      => ['bail', 'required', 'string', 'max:255', 'regex:/^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$/'],
             'method'   => ['bail', 'required', 'string', Rule::enum(MonitorMethodEnum::class)],
             'interval' => ['bail', 'required', 'integer', 'min:1', 'max:1440'],
             'timeout'  => ['bail', 'required', 'integer', 'min:1', 'max:60'],

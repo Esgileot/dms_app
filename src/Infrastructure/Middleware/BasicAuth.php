@@ -35,7 +35,7 @@ abstract readonly class BasicAuth
         $username = $request->header('PHP_AUTH_USER');
         $password = $request->header('PHP_AUTH_PW');
 
-        if ($username !== $this->username || $password !== $this->password) {
+        if (!hash_equals($this->username, (string) $username) || !hash_equals($this->password, (string) $password)) {
             return response()->make(
                 'Authentication Required',
                 Response::HTTP_UNAUTHORIZED,

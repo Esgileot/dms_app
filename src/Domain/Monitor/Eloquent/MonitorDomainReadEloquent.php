@@ -25,7 +25,7 @@ class MonitorDomainReadEloquent
             ->first() ?? throw new MonitorDomainFindException();
     }
 
-    public function tryGetById(int $domainId): MonitorDomain
+    public function tryGetById(int $domainId): ?MonitorDomain
     {
         return $this->model->query()->with('scheduleSetting')->where('id', '=', $domainId)->first();
     }
@@ -38,16 +38,6 @@ class MonitorDomainReadEloquent
             ->latest()
             ->paginate(20);
     }
-
-    public function getDetailList(Admin $admin): LengthAwarePaginator
-    {
-        return $this->model->query()
-            ->with('scheduleSetting')
-            ->where('admin_id', '=', $admin->id)
-            ->latest()
-            ->paginate(20);
-    }
-
 
     public function isExistsByDomain(Admin $admin, string $domain, ?int $exceptId): bool
     {

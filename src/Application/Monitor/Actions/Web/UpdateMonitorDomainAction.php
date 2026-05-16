@@ -45,7 +45,7 @@ class UpdateMonitorDomainAction
                 $monitorDomain = $this->monitorDomainWriteEloquent->save(monitorDomain: $monitorDomain);
                 $scheduleSetting = $this->scheduleSettingWriteEloquent->save(scheduleSetting: $scheduleSetting);
 
-                return $monitorDomain->setRelation('scheduleSettings', $scheduleSetting);
+                return $monitorDomain->setRelation('scheduleSetting', $scheduleSetting);
             }, 3);
         } catch (Throwable $e) {
             throw new EntityUpdateException('Failed to update monitor domain', previous: $e);

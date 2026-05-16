@@ -17,7 +17,7 @@ class DashboardPageController extends BaseController
         $monitorDomains = $action->execute(admin: $request->getAuthAdmin());
 
         return Inertia::render('Dashboard', [
-            'domains' => $monitorDomains
+            'domains' => $monitorDomains,
         ]);
     }
 }

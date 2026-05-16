@@ -53,7 +53,7 @@ abstract class TestCase extends BaseTestCase
     {
         // Force web domain configuration
         config([
-            'app.web_domain' => 'localhost'
+            'app.web_domain' => 'localhost',
         ]);
 
         // Register views for testing

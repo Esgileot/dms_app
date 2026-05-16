@@ -11,7 +11,7 @@ use Presentation\Background\App\Commands\ScheduleDomainCheckCronCommand;
 class Kernel extends ConsoleKernel
 {
     protected $commands = [
-        ScheduleDomainCheckCronCommand::class
+        ScheduleDomainCheckCronCommand::class,
     ];
 
 

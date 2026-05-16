@@ -16,6 +16,5 @@ class AdminData extends Data
         public string $email,
         #[WithCast(PasswordCast::class)]
         public Password $password,
-    ) {
-    }
+    ) {}
 }

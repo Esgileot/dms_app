@@ -38,6 +38,6 @@ class Admin extends Authenticatable
 
     public function sendEmailVerificationNotification()
     {
-        $this->notify(new VerifyEmail);
+        $this->notify(new VerifyEmail());
     }
 }

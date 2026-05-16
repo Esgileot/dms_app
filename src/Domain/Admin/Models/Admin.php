@@ -9,6 +9,7 @@ use Domain\Admin\Enums\AdminStatusEnum;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Domain\Auth\Mails\VerifyEmail;
+use Illuminate\Auth\MustVerifyEmail;
 
 /**
  * @property int            $id
@@ -24,6 +25,7 @@ use Domain\Auth\Mails\VerifyEmail;
 class Admin extends Authenticatable
 {
     use Notifiable;
+    use MustVerifyEmail;
 
     protected $fillable = ['name', 'email', 'password'];
 

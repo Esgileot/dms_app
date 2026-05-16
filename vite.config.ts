@@ -12,8 +12,9 @@ export default defineConfig({
         port: 5173,
         strictPort: true,
         hmr: {
-            host: 'localhost',
-            port: 5173,
+            // host: 'localhost',
+            host: "superdivine-intergular-maxwell.ngrok-free.dev",
+            // port: 5173,
         },
     },
     plugins: [

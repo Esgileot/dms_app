@@ -24,8 +24,6 @@ class RegisterAction
 
         $admin = $this->adminWriteEloquent->save($admin);
 
-        // event(new Registered($user));
-
         Auth::login($admin);
 
         return $admin;

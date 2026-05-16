@@ -3,7 +3,8 @@
 namespace Presentation\Web\App\Http\Middleware;
 
 use Closure;
-use Illuminate\Auth\MustVerifyEmail;
+use Domain\Admin\Models\Admin;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
 
@@ -30,7 +31,11 @@ class EnsureEmailIsVerified
      */
     public function handle($request, Closure $next, $redirectToRoute = null)
     {
-        if (! $request->user() || ($request->user() instanceof MustVerifyEmail && ! $request->user()->hasVerifiedEmail())) {
+        if ($request->user() === null) {
+            throw new AuthenticationException();
+        }
+
+        if ($request->user() instanceof Admin && ! $request->user()->hasVerifiedEmail()) {
             return $request->expectsJson()
                 ? abort(403, 'Your email address is not verified.')
                 : Redirect::guest(URL::route($redirectToRoute ?: 'web.verification.notice'));

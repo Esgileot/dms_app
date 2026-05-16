@@ -16,7 +16,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Infrastructure\Middleware\TrimSpacesMiddleware;
 use Presentation\Web\App\Http\Exceptions\Handler;
-use Presentation\Web\App\Http\Middleware\{EnsureEmailIsVerified, HandleInertiaRequests, RedirectIfAuthenticated, Authenticate};
+use Presentation\Web\App\Http\Middleware\{EnsureEmailIsVerified, HandleInertiaRequests, RedirectIfAuthenticated, Authenticate, TrustProxies};
 
 class WebServiceProvider extends ServiceProvider
 {
@@ -52,6 +52,7 @@ class WebServiceProvider extends ServiceProvider
         $router = $this->app['router'];
 
         $router->middlewareGroup('web', [
+            TrustProxies::class,
             EncryptCookies::class,
             AddQueuedCookiesToResponse::class,
             StartSession::class,

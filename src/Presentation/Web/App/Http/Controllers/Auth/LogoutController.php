@@ -18,6 +18,6 @@ class LogoutController extends BaseController
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return to_route('web.login');
+        return to_route('web.login.page');
     }
 }

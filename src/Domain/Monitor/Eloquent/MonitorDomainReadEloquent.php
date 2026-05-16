@@ -36,7 +36,7 @@ class MonitorDomainReadEloquent
             ->with('scheduleSetting')
             ->where('admin_id', '=', $admin->id)
             ->latest()
-            ->paginate(2);
+            ->paginate(20);
     }
 
     public function getDetailList(Admin $admin): LengthAwarePaginator
@@ -45,7 +45,7 @@ class MonitorDomainReadEloquent
             ->with('scheduleSetting')
             ->where('admin_id', '=', $admin->id)
             ->latest()
-            ->paginate(2);
+            ->paginate(20);
     }
 
 

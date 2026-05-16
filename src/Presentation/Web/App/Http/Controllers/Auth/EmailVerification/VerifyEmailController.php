@@ -15,6 +15,6 @@ class VerifyEmailController extends BaseController
     {
         $action->execute($request->getAuthAdmin());
 
-        return redirect()->intended(route('web.dashboard') . '?verified=1');
+        return redirect()->intended(route('web.dashboard.page') . '?verified=1');
     }
 }

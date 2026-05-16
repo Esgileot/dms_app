@@ -15,6 +15,6 @@ class RegisterController extends BaseController
     {
         $action->execute($request->getData());
 
-        return to_route('web.dashboard');
+        return to_route('web.dashboard.page');
     }
 }

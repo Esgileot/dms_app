@@ -10,7 +10,8 @@ services:
       - ./docker/php/conf.d/zzz-local.ini:/usr/local/etc/php/conf.d/zzz-local.ini:ro
     env_file:
       - .env
-    command: sh -c 'php artisan optimize:clear && npm run dev & exec php-fpm'
+    # command: sh -c 'php artisan optimize:clear && npm run dev & exec php-fpm'
+    command: sh -c 'php artisan optimize:clear && npm run build & exec php-fpm'
     ports:
       - "5173:5173"
     depends_on:
